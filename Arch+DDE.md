@@ -43,7 +43,9 @@ pacman -Syy archlinuxcn-keyring
 #### 安装X窗口服务器
 
 ```shell
-pacman -S xorg xorg-drivers xorg-server mesa mesa-libgl lib32-mesa-libgl mesa-vdpau  lib32-mesa-vdpau libvdpau-va-gl 
+pacman -S xorg xorg-drivers xorg-server 
+pacman -S mesa mesa-libgl lib32-mesa-libgl mesa-vdpau  lib32-mesa-vdpau libvdpau-va-gl		# 显示工具，可选
+echo "export VDPAU_DRIVER=va_gl" >> /etc/profile	# 配置显示工具
 ```
 
 #### 安装显卡驱动
@@ -51,13 +53,13 @@ pacman -S xorg xorg-drivers xorg-server mesa mesa-libgl lib32-mesa-libgl mesa-vd
 intel开源驱动已经在上面安装过了，N卡需要再安装闭源驱动
 
 ```shell
-pacman -S nvidia nvidia-settings nvidia-utils lib32-nvidia-utils libglvnd
+pacman -S nvidia nvidia-settings nvidia-utils lib32-nvidia-utils libglvnd lib32-virtualgl
 ```
 
 双显卡笔记本可采用optimus-manager来管理
 
 ```shell
-pacman -S optimus-manager optimus-manager-qt bbswitch
+pacman -S optimus-manager optimus-manager-qt
 ```
 
 #### 安装DDE
@@ -80,8 +82,9 @@ systemctl enable lightdm
 - 蓝牙管理
 
   ```shell
-  pacman -S bluez blue-utils 
-  pacman -S alsa-utils alsa-plugins pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer	#pulseaudio管理模块可选
+  pacman -S bluez bluez-utils 
+  pacman -S alsa-utils alsa-plugins 
+  pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer	#pulseaudio管理模块可选
   systemctl enable bluetooth
   ```
 
@@ -114,7 +117,7 @@ sudo echo 'LANG=zh_CN.UTF-8' > /etc/locale.conf
 ```shell
 sudo pacman -S fcitx fcitx-configtool fcitx-im fcitx-googlepinyin
 echo 'export GTK_IM_MODULE=fcitx' > .xprofile
-echo 'export QT_IM_MODULE+fcitx' >> .xprofile
+echo 'export QT_IM_MODULE=fcitx' >> .xprofile
 echo 'export XMODIFIERS="@im=fcitx"' >> .xprofile
 ```
 

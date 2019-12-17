@@ -49,9 +49,9 @@ ls /sys/firmware/efi/efivars
 vim /etc/pacman.d/mirorrlist
 ```
 
-在第一行加入我最喜欢的阿里云镜像源 
+在第一行加入镜像源，这个是东软的，可自行更换 
 
-Server = <https://mirrors.aliyun.com/archlinux/$repo/os/$arch>
+Server = <https://mirrors.neusoft.edu.cn/archlinux/$repo/os/$arch>
 
 #### 更新系统时间
 
@@ -96,7 +96,7 @@ gdisk /dev/nvme0n1	#更换为自己想要安装到的硬盘
 #### 开始安装
 
 ```shell
-pacstrap /mnt base base-devel linux linux-firmware linux-headers dosfstools e2fsprogs xfsprogs net-tools dhclient dhcpcd dialog iw netctl wireless_tools wpa_supplicant inetutils nano vim man-db man-pages texinfo lvm2 sudo  
+pacstrap /mnt base base-devel linux linux-firmware linux-headers dosfstools e2fsprogs xfsprogs net-tools dhclient dhcpcd dialog iw netctl wireless_tools wpa_supplicant inetutils nano vim man-db man-pages lvm2
 ```
 
 base组更改之后需要加装很多东西，管理文件系统的、联网的、文本编辑的......
@@ -199,7 +199,7 @@ N卡的电脑建议添加禁用 nouveau 的内核参数到grub，方法如下
 
 ```shell
 vim /etc/default/grub	
-# 添加GRUB_CMDLINE_LINUX_DEFAULT="modprobe.blacklist=nouveau"
+# 在GRUB_CMDLINE_LINUX_DEFAULT="" 添加 "modprobe.blacklist=nouveau"
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
