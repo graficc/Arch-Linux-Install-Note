@@ -15,7 +15,7 @@
 
 ```shell
 useradd -m -G wheel -s /bin/bash aaron	#aaron替换为你喜欢的用户名，不能大写^_^
-passwd aaron							#设置用户密码
+passwd aaron	#设置用户密码
 EDITOR=vim visudo
 #取消 “# %wheel ALL=(ALL) ALL” 的注释
 ```
@@ -27,9 +27,9 @@ vim /etc/pacman.conf
 # 取消 “#[multilib]”和“#Include = /etc/pacman.d/mirrorlist”注释
 echo '[archlinuxcn]' >> /etc/pacman.conf
 echo 'Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux-cn/$arch' \
->> /etc/pacman.conf										#这是上海交大的镜像源，可自行替换
-pacman -Syy archlinuxcn-keyring							#添加archlinuxcn源的密钥
-pacman -S yay											#安装yay，牛批的AUR管理工具
+>> /etc/pacman.conf	#这是上海交大的镜像源，可自行替换
+pacman -Syy archlinuxcn-keyring	#添加archlinuxcn源的密钥
+pacman -S yay	#安装yay，牛批的AUR管理工具
 yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save	#对AUR使用清华源的反向代理
 ```
 
@@ -46,13 +46,13 @@ pacman -Syy archlinuxcn-keyring
 #### 安装xorg服务
 
 ```shell
-pacman -S xorg										#xorg服务
-pacman -S xf86-video-intel mesa lib32-mesa			#intel核显驱动
-pacman -S mesa-libgl lib32-mesa-libgl mesa-vdpau lib32-mesa-vdpau libvdpau-va-gl  #渲染工具
+pacman -S xorg	#xorg服务
+pacman -S xf86-video-intel mesa lib32-mesa	#intel核显驱动
+pacman -S mesa-libgl lib32-mesa-libgl mesa-vdpau lib32-mesa-vdpau libvdpau-va-gl	#渲染工具
 echo "export VDPAU_DRIVER=va_gl" >> /etc/profile	#配置渲染工具
-pacman -S xf86-input-libinput						#输入设备驱动
+pacman -S xf86-input-libinput	#输入设备驱动
 ln -sf /usr/share/X11/xorg.conf.d/40-libinput.conf \
-/etc/X11/xorg.conf.d/40-libinput.conf				#初始化配置
+/etc/X11/xorg.conf.d/40-libinput.conf	#初始化配置
 ```
 
 #### 安装显卡驱动
@@ -74,8 +74,8 @@ pacman -S optimus-manager optimus-manager-qt
 ```shell
 pacman -S deepin deepin-extra lightdm lightdm-deepin-greeter
 sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-deepin-greeter/' \
-/etc/lightdm/lightdm.conf							#更改登录界面为deepin
-systemctl enable lightdm							#开机自启动lightdm
+/etc/lightdm/lightdm.conf	#更改登录界面为deepin
+systemctl enable lightdm	#开机自启动lightdm
 ```
 
 #### 安装网络管理模块
@@ -84,7 +84,7 @@ systemctl enable lightdm							#开机自启动lightdm
 
   ```shell
   pacman -S networkmanager network-manager-applet
-  systemctl enable NetworkManager		#注意大小写
+  systemctl enable NetworkManager	#注意大小写
   ```
 
 - 蓝牙管理
@@ -93,7 +93,7 @@ systemctl enable lightdm							#开机自启动lightdm
   pacman -S bluez bluez-utils 
   pacman -S alsa-utils alsa-plugins 
   pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth	#pulseaudio管理模块可选
-  systemctl enable bluetooth			#开机自启动蓝牙
+  systemctl enable bluetooth	#开机自启动蓝牙
   ```
 
 #### 安装中文字体
