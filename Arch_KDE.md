@@ -15,7 +15,7 @@
 
 ```shell
 useradd -m -G wheel -s /bin/bash aaron    #aaron替换为你喜欢的用户名，不能大写^_^
-passwd aaron                              #设置用户密码
+passwd aaron                                                         #设置用户密码
 EDITOR=vim visudo
 #取消 “# %wheel ALL=(ALL) ALL” 的注释
 ```
@@ -27,9 +27,9 @@ vim /etc/pacman.conf
 # 取消 “#[multilib]” 和 “#Include = /etc/pacman.d/mirrorlist”注释
 echo '[archlinuxcn]' >> /etc/pacman.conf
 echo 'Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux-cn/$arch' \
->> /etc/pacman.conf                       #这是上海交大的镜像源，可自行替换
+>> /etc/pacman.conf                                     #这是上海交大的镜像源，可自行替换
 pacman -Syy archlinuxcn-keyring           #添加archlinuxcn源的密钥
-pacman -S yay                             #安装yay，牛批的AUR管理工具
+pacman -S yay                                                  #安装yay，牛批的AUR管理工具
 ```
 
 ps：若添加密钥失败，可进行如下操作
@@ -45,11 +45,11 @@ pacman -Syy archlinuxcn-keyring
 #### 安装xorg服务
 
 ```shell
-pacman -S xorg                               #xorg服务
+pacman -S xorg                                                               #xorg服务
 pacman -S xf86-video-intel mesa lib32-mesa   #intel核显驱动
-pacman -S xf86-input-libinput                #输入设备驱动
+pacman -S xf86-input-libinput                                 #输入设备驱动
 ln -sf /usr/share/X11/xorg.conf.d/40-libinput.conf \
-/etc/X11/xorg.conf.d/40-libinput.conf        #初始化配置
+/etc/X11/xorg.conf.d/40-libinput.conf                  #初始化配置
 ```
 
 #### 安装显卡驱动
@@ -90,7 +90,7 @@ systemctl enable sddm
 
   ```shell
   pacman -S bluez bluez-utils alsa-utils pulseaudio pulseaudio-alsa
-  systemctl enable bluetooth         #开机自启动蓝牙
+  systemctl enable bluetooth                   #开机自启动蓝牙
   ```
 
 #### 安装中文字体
