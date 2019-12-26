@@ -23,7 +23,7 @@
 useradd -m -G wheel -s /bin/bash aaron    # aaron替换为你喜欢的用户名，不能大写^_^
 passwd aaron    # 设置用户密码
 EDITOR=vim visudo
-# 取消 “#  %wheel ALL=(ALL) ALL” 的注释
+# 取消 “# %wheel ALL=(ALL) ALL” 的注释
 ```
 
 #### 启用32位支持、添加Archlinuxcn源和AUR管理工具
@@ -35,7 +35,6 @@ echo '[archlinuxcn]' >> /etc/pacman.conf
 echo 'Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux-cn/$arch' \
 >> /etc/pacman.conf    # 这是上海交大的镜像源，可自行替换
 pacman -Syy archlinuxcn-keyring    # 添加archlinuxcn源的密钥
-pacman -S yay    # 安装yay---AUR管理工具
 ```
 
 ps：若添加密钥失败，可进行如下操作
@@ -78,7 +77,7 @@ pacman -S optimus-manager optimus-manager-qt
 #### 安装KDE
 
 ```sh
-pacman -S plasma kdebase spectacle gwenview kimageformats    # 安装kde桌面和部分工具
+pacman -S plasma-meta kdebase-meta kdegraphics-meta    # 安装kde桌面和部分工具
 pacman -S sddm sddm-kcm    # 安装kde登录界面
 systemctl enable sddm    #设置登录界面自启动
 ```
