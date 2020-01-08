@@ -97,6 +97,10 @@ systemctl enable sddm    #设置登录界面自启动
   pacman -S bluez bluez-utils
   systemctl enable bluetooth    # 设置蓝牙模块开机自启动
   ```
+  + 若是Broadcom蓝牙,还需要安装驱动
+  ```sh
+  yay -S bluez-firmware 
+  ```
 
 #### 安装中文字体
 
